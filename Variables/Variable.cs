@@ -27,6 +27,7 @@ namespace Basic_Syntex
 
         static void Main(string[] args)
         {
+            // Declaration
             int age; // declares an integer variable named age
 
 

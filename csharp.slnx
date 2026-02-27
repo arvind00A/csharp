@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DataTypes/DataTypes.csproj" Id="5793e083-5171-46c1-af83-ad81f34211ea" />
   <Project Path="Variables/Variables.csproj" />
 </Solution>
