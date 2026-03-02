@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="DataTypes/DataTypes.csproj" Id="5793e083-5171-46c1-af83-ad81f34211ea" />
+  <Project Path="Operators/Operators.csproj" Id="55461919-fde5-4868-9bbe-70e21d492e8d" />
   <Project Path="Variables/Variables.csproj" />
 </Solution>
