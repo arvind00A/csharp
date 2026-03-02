@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="ControlStatements/ControlStatements.csproj" Id="8114bcf9-6494-470b-8ec6-c0609ce62910" />
   <Project Path="DataTypes/DataTypes.csproj" Id="5793e083-5171-46c1-af83-ad81f34211ea" />
+  <Project Path="loops/loops.csproj" Id="4a5589a4-8588-49a4-b2e4-b5426b2e1af7" />
   <Project Path="Operators/Operators.csproj" Id="55461919-fde5-4868-9bbe-70e21d492e8d" />
   <Project Path="Variables/Variables.csproj" />
 </Solution>
