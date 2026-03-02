@@ -11,7 +11,7 @@ using System.Text;
 
 namespace DataTypes
 {
-    public class ValueTypes
+    internal class ValueTypes
     {
         // Integral
 
