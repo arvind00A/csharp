@@ -57,7 +57,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 ```ansi
 ## Repository Structure
 
-**csharp-learning
+*csharp-learning
    ├── day1/ Fundamentals
    │     └── 01-Variables
    │     └── 02-Operators
