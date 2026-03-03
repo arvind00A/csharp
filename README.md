@@ -54,27 +54,27 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 
 > Last updated: March 03, 2026
 
-
+```ansi
 ## Repository Structure
 
 **csharp-learning
-   ├── day1/ Fundamentals
-   │     └── 01##-Variables
-   │     └── 02##-Operators
-   │     └── 03##-control-statements
-   │     └── 04##-jump-statements
-   │     └── 05##-loops
-   │── day2/ Classes & Objects
-   │     └── 01*-*Methods and Parameters            
-   │                   └── 01*-*Return Types
-   │                   └── 02*-*Parameter Passing
-   │                   └── 03*-*Optional Parameters
-   │                   └── 04*-*Named Arguments
-   │      └── 02*-*Constructors
-   │                   └── 01*-*Default Constructors
-   │                   └── 02*-*Parameterized Constructors
-   │                   └── 03*-*Constructor Overloading
-   │                   └── 04*-*Static Constructors & Copy Constructors
+   ├── day1/ [90m# Fundamentals[0m
+   │     └── 01-Variables
+   │     └── 02-Operators
+   │     └── 03-control-statements
+   │     └── 04-jump-statements
+   │     └── 05-loops
+   │── day2/ [90m# Classes & Objects[0m
+   │     └── 01-Methods and Parameters            
+   │                   └── 01-Return Types
+   │                   └── 02-Parameter Passing
+   │                   └── 03-Optional Parameters
+   │                   └── 04-Named Arguments
+   │      └── 02-Constructors
+   │                   └── 01-Default Constructors
+   │                   └── 02-Parameterized Constructors
+   │                   └── 03-Constructor Overloading
+   │                   └── 04-Static Constructors & Copy Constructors
    │
    │
    │
