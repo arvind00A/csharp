@@ -4,7 +4,7 @@
 **Focus:** Core building blocks of C# programming  
 **Environment:** Visual Studio 2026 + .NET 10 (C# 14)
 
-### 1. Variables & Data Types
+### 1. Data Types
  
 C# is **strongly typed** — every variable must have a declared type at compile time.
 
