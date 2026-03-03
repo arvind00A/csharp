@@ -60,11 +60,11 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 
 **csharp-learning
    ├── day1/ Fundamentals
-   │     └── 01*-*Variables
-   │     └── 02*-*Operators
-   │     └── 03*-*control-statements
-   │     └── 04*-*jump-statements
-   │     └── 05*-*loops
+   │     └── 01##-Variables
+   │     └── 02##-Operators
+   │     └── 03##-control-statements
+   │     └── 04##-jump-statements
+   │     └── 05##-loops
    │── day2/ Classes & Objects
    │     └── 01*-*Methods and Parameters            
    │                   └── 01*-*Return Types
