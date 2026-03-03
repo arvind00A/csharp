@@ -1,4 +1,4 @@
-## Day 1 – Fundamentals
+## Fundamentals
 
 **Date:** March 02, 2026  
 **Focus:** Core building blocks of C# programming  
