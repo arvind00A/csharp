@@ -56,26 +56,3 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 
 ---
 
-## Day 1 – Fundamentals
-
-### 1. Variables & Data Types
-
-**Definition**: Named storage locations with a specific type.
-
-**Key Types**:
-
-| Category     | Type       | Size   | Example                     | Notes                          |
-|--------------|------------|--------|-----------------------------|--------------------------------|
-| Integral     | `int`      | 4 bytes| `int age = 28;`             | Most common integer            |
-| Floating     | `double`   | 8 bytes| `double pi = 3.14159;`      | General decimal                |
-| Decimal      | `decimal`  | 16 bytes| `decimal price = 19.99m;`  | Money / precision              |
-| Text         | `string`   | —      | `string name = "Arvind";`   | Immutable                      |
-| Boolean      | `bool`     | 1 byte | `bool isActive = true;`     | true / false                   |
-
-**Code Example**:
-```csharp
-int score = 85;
-string greeting = "Hello, C#!";
-bool isWeekend = true;
-
-Console.WriteLine($"{greeting} Score: {score}, Weekend? {isWeekend}");
