@@ -1,6 +1,7 @@
 ### Methods and Parameters
 
 **Methods**
+
 A method is a block of code that performs a task.
 -  It can:
 	* Return nothing (void)
@@ -15,6 +16,7 @@ A method is a block of code that performs a task.
 ```
 
 **Parameter Passing**
+
 C# passes parameters by value by default. 
 But you can change behavior with ref and out.
 
@@ -32,7 +34,7 @@ void Increment(int x)
 }
 ```
 
-- **Pass by Reference (ref)**:
+ **Pass by Reference (ref)**:
  
 * Passes memory address (reference)
 * Changes inside method affect original variable
@@ -45,9 +47,9 @@ void Increment(ref int x)
 }
 ```
 
-- **out parameter**:
+ **out parameter**:
 
-* Like ref, but:
+- Like ref, but:
     * Method must assign a value to the out parameter
     * Caller does not need to initialize the variable
     * Often used to return multiple values
