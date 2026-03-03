@@ -58,13 +58,13 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 ## Repository Structure
 
 **csharp-learning
-   ├── day1/ [90m# Fundamentals[0m
+   ├── day1/ Fundamentals
    │     └── 01-Variables
    │     └── 02-Operators
    │     └── 03-control-statements
    │     └── 04-jump-statements
    │     └── 05-loops
-   │── day2/ [90m# Classes & Objects[0m
+   │── day2/ Classes & Objects
    │     └── 01-Methods and Parameters            
    │                   └── 01-Return Types
    │                   └── 02-Parameter Passing
