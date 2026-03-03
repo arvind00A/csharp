@@ -39,8 +39,8 @@ count = 42;
 // Constant (compile-time value)
 const double Gravity = 9.81;
 
-
-**Best Practices:**
+```
+**Best Practices**
 * Choose smallest type for memory efficiency.
 * Initialize variables early to avoid bugs.
 * Use var for readability when type is obvious.
