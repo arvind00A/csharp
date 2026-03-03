@@ -55,7 +55,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 > Last updated: March 03, 2026
 
 ---
-```text
+```ansi
 ## Repository Structure
 
 **csharp-learning
