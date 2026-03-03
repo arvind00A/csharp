@@ -1,10 +1,6 @@
 
 ### Operators
-
-```markdown
-### Operators
-
-**Definition**  
+ 
 Operators are special symbols or keywords that perform operations on one or more operands (variables, literals, expressions).
 
 #### Arithmetic Operators
