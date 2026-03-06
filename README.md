@@ -49,7 +49,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 |-----|--------------------------------|------------|-------------------------------|
 | 1   | Fundamentals (Variables, Operators, Control, Loops) | ✅ Done   | [Day 1 Notes](./Day1-Fundamentals.md) |
 | 2   | Classes & Objects (Methods, Parameters) | ✅ Done   | [Day 2 Notes](./Day2-Classes.md)      |
-| 3   | OOPs    | ✅ Done | [Day 2 Notes](./Day2-Classes.md)                             |
+| 3   | OOPs    | ✅ Done | [Day 3 Notes](./Day3-Classes.md)                             |
 | 4   | Properties, Constructors, Inheritance | ⏳ Planned | —                             |
 | ... | ...                            | ...        | ...                           |
 
