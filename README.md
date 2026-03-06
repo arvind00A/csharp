@@ -20,6 +20,7 @@ A structured, beginner-to-intermediate C# tutorial series with definitions, synt
 - [Progress & Completed Days](#progress--completed-days)
 - [Day 1 – Fundamentals](#day-1--fundamentals)
 - [Day 2 – Classes & Objects](#day-2--classes--objects)
+- [Day 3 – OOPs](#day-3--OOPs)
 - [Upcoming Topics](#upcoming-topics)
 - [How to Use This Repo](#how-to-use-this-repo)
 - [Tools & Environment](#tools--environment)
@@ -48,7 +49,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 |-----|--------------------------------|------------|-------------------------------|
 | 1   | Fundamentals (Variables, Operators, Control, Loops) | ✅ Done   | [Day 1 Notes](./Day1-Fundamentals.md) |
 | 2   | Classes & Objects (Methods, Parameters) | ✅ Done   | [Day 2 Notes](./Day2-Classes.md)      |
-| 3   | Arrays, Lists & Collections    | ⏳ Planned | —                             |
+| 3   | OOPs    | ✅ Done | [Day 2 Notes](./Day2-Classes.md)                             |
 | 4   | Properties, Constructors, Inheritance | ⏳ Planned | —                             |
 | ... | ...                            | ...        | ...                           |
 
@@ -76,11 +77,19 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │                   └── 03-Constructor Overloading
    │                   └── 04-Static Constructors & Copy Constructors
    │      └── 03-Fields (data)
+   │── day3/ OOPs 4 Pillars
+   │     └── 01-Encapsulation
+   │                  └── 01-Access Modifiers
+   │                  └── 02-Properties
+   │     └── 02-Inheritance
+   │                  └── 01-Types of Inheritance
+   │                  └── 02-base and this keywords
+   │     └── 03-Abstraction         
+   │                  └── Abstract Classes & Interfaces
+   │     └── 04-Polymorphism
+   │                  └──01-Compile-Time
+   │                  └──02-Runtime
+   │     └── 05-Indexers
    │
    │
    │
-   │
-   │
-   │
-   │
-   
