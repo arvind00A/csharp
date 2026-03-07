@@ -21,6 +21,7 @@ A structured, beginner-to-intermediate C# tutorial series with definitions, synt
 - [Day 1 – Fundamentals](#day-1--fundamentals)
 - [Day 2 – Classes & Objects](#day-2--classes--objects)
 - [Day 3 – OOPs](#day-3--OOPs)
+- [Day 4 – Array, String & Tuples](#day-3--OOPs)
 - [Upcoming Topics](#upcoming-topics)
 - [How to Use This Repo](#how-to-use-this-repo)
 - [Tools & Environment](#tools--environment)
@@ -47,13 +48,13 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 
 | Day | Topic                          | Status     | Link in Repo                  |
 |-----|--------------------------------|------------|-------------------------------|
-| 1   | Fundamentals (Variables, Operators, Control, Loops) | ✅ Done   | [Day 1 Notes](./Day1-Fundamentals.md) |
-| 2   | Classes & Objects (Methods, Parameters) | ✅ Done   | [Day 2 Notes](./Day2-Classes.md)      |
-| 3   | OOPs    | ✅ Done | [Day 3 Notes](./Day3-Classes.md)                             |
-| 4   | Properties, Constructors, Inheritance | ⏳ Planned | —                             |
+| 1   | Fundamentals (Variables, Operators, Control, Loops) | ✅ Done   | [Day 1 Notes](./README.md) |
+| 2   | Classes & Objects (Methods, Parameters) | ✅ Done   | [Day 2 Notes](./README.md)      |
+| 3   | OOPs    | ✅ Done | [Day 3 Notes](./README.md)                             |
+| 4   | Basic Data Structures (Array, String, Tuples) | ✅ Done | [Day 4 Notes](./README.md)   |
 | ... | ...                            | ...        | ...                           |
 
-> Last updated: March 03, 2026
+> Last updated: March 07, 2026
 
 ```ansi
 ## Repository Structure
@@ -90,6 +91,22 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │                  └──01-Compile-Time
    │                  └──02-Runtime
    │     └── 05-Indexers
+   │──Day 4 – Basic Data Structures
+   │
+   ├── Arrays
+   │      ├── Single-Dimensional    
+   │      ├── Array Methods          
+   │      ├── Array Class           
+   │      └── Multi-Dim / Jagged     
+   │
+   ├── Strings
+   │      ├── String Operations      
+   │      ├── Interpolation ($)      
+   │      └── String vs StringBuilder 
+   │
+   ├── Tuples
+   │       └── Named Tuples          
    │
    │
    │
+```
