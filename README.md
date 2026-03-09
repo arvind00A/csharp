@@ -21,7 +21,8 @@ A structured, beginner-to-intermediate C# tutorial series with definitions, synt
 - [Day 1 – Fundamentals](#day-1--fundamentals)
 - [Day 2 – Classes & Objects](#day-2--classes--objects)
 - [Day 3 – OOPs](#day-3--OOPs)
-- [Day 4 – Array, String & Tuples](#day-3--OOPs)
+- [Day 4 – Array, String & Tuples](#day-4--Array)
+- [Day 5 – Generics](#day-5--Generic)
 - [Upcoming Topics](#upcoming-topics)
 - [How to Use This Repo](#how-to-use-this-repo)
 - [Tools & Environment](#tools--environment)
@@ -52,9 +53,10 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 | 2   | Classes & Objects (Methods, Parameters) | ✅ Done   | [Day 2 Notes](./README.md)      |
 | 3   | OOPs    | ✅ Done | [Day 3 Notes](./README.md)                             |
 | 4   | Basic Data Structures (Array, String, Tuples) | ✅ Done | [Day 4 Notes](./README.md)   |
+| 5   | Generics (Classes, Methods, Contraints)       | ✅ Done        | [Day 5 Notes](./README.md)   |
 | ... | ...                            | ...        | ...                           |
 
-> Last updated: March 07, 2026
+> Last updated: March 09, 2026
 
 ```ansi
 ## Repository Structure
@@ -66,7 +68,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │     └── 03-control-statements
    │     └── 04-jump-statements
    │     └── 05-loops
-   │── day2/ Classes & Objects
+   ├── day2/ Classes & Objects
    │     └── 01-Methods and Parameters            
    │                   └── 01-Return Types
    │                   └── 02-Parameter Passing
@@ -78,7 +80,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │                   └── 03-Constructor Overloading
    │                   └── 04-Static Constructors & Copy Constructors
    │      └── 03-Fields (data)
-   │── day3/ OOPs 4 Pillars
+   ├── day3/ OOPs 4 Pillars
    │     └── 01-Encapsulation
    │                  └── 01-Access Modifiers
    │                  └── 02-Properties
@@ -91,21 +93,34 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │                  └──01-Compile-Time
    │                  └──02-Runtime
    │     └── 05-Indexers
-   │──Day 4 – Basic Data Structures
+   ├── day4/ Basic Data Structures
+   │    └── Arrays
+   │            ├── Single-Dimensional    
+   │            ├── Array Methods          
+   │            ├── Array Class           
+   │            └── Multi-Dim / Jagged     
+   │    └── Strings
+   │            ├── String Operations      
+   │            ├── Interpolation ($)      
+   │            └── String vs StringBuilder 
+   │    └── Tuples
+   │             └── Named Tuples          
    │
-   ├── Arrays
-   │      ├── Single-Dimensional    
-   │      ├── Array Methods          
-   │      ├── Array Class           
-   │      └── Multi-Dim / Jagged     
-   │
-   ├── Strings
-   │      ├── String Operations      
-   │      ├── Interpolation ($)      
-   │      └── String vs StringBuilder 
-   │
-   ├── Tuples
-   │       └── Named Tuples          
+   ├── day5/ Generics
+   │     ├── Generic Classes         public class MyClass<T> { }
+   │     │   ├── Single type param   Box<T>
+   │     │   └── Multiple params     Pair<TKey, TValue>
+   │     │
+   │     ├── Generic Methods         public static void Method<T>(T val) { }
+   │     │   ├── Explicit call       Method<int>(42)
+   │     │   └── Type inference      Method(42)   ← compiler infers T = int
+   │     │
+   │     └── Generic Constraints     where T : ...
+   │         ├── where T : class              reference types only
+   │         ├── where T : struct             value types only
+   │         ├── where T : new()              can do new T()
+   │         ├── where T : IComparable<T>     can compare values
+   │         └── Combined: where T : class, IAnimal, new()
    │
    │
    │
