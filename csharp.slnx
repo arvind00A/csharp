@@ -4,6 +4,7 @@
   <Project Path="ControlStatements/ControlStatements.csproj" />
   <Project Path="DataTypes/DataTypes.csproj" />
   <Project Path="Fields/Fields.csproj" />
+  <Project Path="Generic/Generic.csproj" Id="f1d0d5aa-31d1-48c7-9340-50b5c33925f6" />
   <Project Path="loops/loops.csproj" />
   <Project Path="MethodsParams/MethodsParams.csproj" />
   <Project Path="OOPs/OOPs.csproj" />
