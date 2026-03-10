@@ -176,7 +176,7 @@ namespace Generic
             // ── Demo 3: Generics Stack ─────────────────────
             Console.WriteLine("\n=== 3. GenericStack<T> ===");
 
-            Console.WriteLine("n -- Ineger Stack --");
+            Console.WriteLine("\n -- Ineger Stack --");
             var intStack = new GenericStack<int>();
             intStack.Push(10);
             intStack.Push(20);
