@@ -23,6 +23,7 @@ A structured, beginner-to-intermediate C# tutorial series with definitions, synt
 - [Day 3 – OOPs](#day-3--OOPs)
 - [Day 4 – Array, String & Tuples](#day-4--Array)
 - [Day 5 – Generics](#day-5--Generic)
+- [Day 5 – Generics](#day-6--Collections)
 - [Upcoming Topics](#upcoming-topics)
 - [How to Use This Repo](#how-to-use-this-repo)
 - [Tools & Environment](#tools--environment)
@@ -54,6 +55,7 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
 | 3   | OOPs    | ✅ Done | [Day 3 Notes](./README.md)                             |
 | 4   | Basic Data Structures (Array, String, Tuples) | ✅ Done | [Day 4 Notes](./README.md)   |
 | 5   | Generics (Classes, Methods, Contraints)       | ✅ Done        | [Day 5 Notes](./README.md)   |
+| 6   | Collections (Non-Generic, Generic, Speciallized)  | ✅ Done        | [Day 6 Notes](./README.md)   |
 | ... | ...                            | ...        | ...                           |
 
 > Last updated: March 09, 2026
@@ -121,6 +123,23 @@ Perfect for beginners, self-learners, or anyone refreshing C# skills in 2026!
    │         ├── where T : new()              can do new T()
    │         ├── where T : IComparable<T>     can compare values
    │         └── Combined: where T : class, IAnimal, new()
+   ├── day6/ Collections
+   │     ├── Non-Generic Collections
+   │     │       ├── ArrayList
+   │     │       ├── Hashtable
+   │     │       └── Queue, Stack, SortedList
+   │     ├── Generic Collections
+   │     │       ├── List<T>
+   │     │       ├── Dictionary<TKey, TValue>
+   │     │       └── Queue<T>, Stack<T>, HashSet<T>, LinkedList<T>, SortedList<T>
+   │     └── Specialized Collections
+   │             └── Concurrent Collections
+   │     
+   │     
+   │
+   │
+   │
+   │
    │
    │
    │
