@@ -23,7 +23,7 @@ A structured, beginner-to-intermediate C# tutorial series with definitions, synt
 - [Day 3 – OOPs](#day-3--OOPs)
 - [Day 4 – Array, String & Tuples](#day-4--Array)
 - [Day 5 – Generics](#day-5--Generic)
-- [Day 5 – Generics](#day-6--Collections)
+- [Day 6 – Collections](#day-6--Collections)
 - [Upcoming Topics](#upcoming-topics)
 - [How to Use This Repo](#how-to-use-this-repo)
 - [Tools & Environment](#tools--environment)
