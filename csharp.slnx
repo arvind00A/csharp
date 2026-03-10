@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ArrayApplication/ArrayApplication.csproj" Id="fae7f00f-4fe9-42e3-b45f-5f12778143b7" />
+  <Project Path="Collections/Collections.csproj" Id="2dd0860b-22c7-4520-bf73-53fdadc83bab" />
   <Project Path="Constructors/Constructors.csproj" />
   <Project Path="ControlStatements/ControlStatements.csproj" />
   <Project Path="DataTypes/DataTypes.csproj" />
