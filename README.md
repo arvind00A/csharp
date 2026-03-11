@@ -54,7 +54,9 @@ Fundamentals → OOP → Collections → Exception Hangling → File I/O → Exp
 | 4 | **Day 4** | [Data Structures](#-day-4--basic-data-structures) | Arrays · Strings · StringBuilder · Tuples | ✅ Done |
 | 5 | **Day 5** | [Generics](#-day-5--generics) | Generic Classes · Methods · Constraints | ✅ Done |
 | 6 | **Day 6** | [Collections](#-day-6--collections) | Non-Generic · Generic · Specialized · Concurrent | ✅ Done |
-> 🕒 **Last updated:** March 10, 2026
+| 7 | **Day 7** | [Exception & File Handling](#-day-7--exception--file-handling) | try-catch-finally · throw vs throw ex · Built-in Exceptions · Global Handler · StreamReader/Writer · File & Dir Operations · Async File I/O | ✅ Done |
+
+> 🕒 **Last updated:** March 11, 2026
 
 ---
 
@@ -459,6 +461,239 @@ BlockingCollection<int> blocking = new();
 
 </details>
 
+## 🔴 Day 7 — Exception & File Handling
+
+<details>
+<summary><b>Click to expand</b></summary>
+
+---
+
+## 🛡️ Exception Handling
+
+#### 🔁 try-catch-finally
+
+```csharp
+try
+{
+    int result = 10 / int.Parse("0");   // throws DivideByZeroException
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine($"Math error: {ex.Message}");
+}
+catch (FormatException ex)
+{
+    Console.WriteLine($"Format error: {ex.Message}");
+}
+catch (Exception ex)                    // catch-all — always place last
+{
+    Console.WriteLine($"Unexpected: {ex.Message}");
+}
+finally
+{
+    Console.WriteLine("Always runs — use for cleanup (close DB, file, etc.)");
+}
+```
+
+> 💡 `finally` always executes — even if an exception is thrown or `return` is called inside `try`.
+
+---
+
+#### 🚀 Throwing Exceptions — `throw` vs `throw ex`
+
+| | `throw` | `throw ex` |
+|---|---|---|
+| **Stack trace** | ✅ Preserved (original call site) | ❌ Reset (loses origin info) |
+| **Best practice** | ✅ Always prefer this | ⚠️ Avoid — loses debugging info |
+
+```csharp
+// ✅ CORRECT — preserves full stack trace
+catch (Exception ex)
+{
+    Log(ex);
+    throw;             // re-throws original exception as-is
+}
+
+// ❌ AVOID — resets stack trace to this line
+catch (Exception ex)
+{
+    Log(ex);
+    throw ex;          // stack trace origin is now lost!
+}
+
+// ✅ Wrapping with context (inner exception preserved)
+catch (SqlException ex)
+{
+    throw new DataAccessException("DB query failed", ex);
+}
+```
+
+---
+
+#### 🧱 Built-in Exceptions
+
+| Exception | Thrown When |
+|---|---|
+| `ArgumentNullException` | Argument is `null` when not allowed |
+| `ArgumentOutOfRangeException` | Argument is outside valid range |
+| `IndexOutOfRangeException` | Array/list index is invalid |
+| `NullReferenceException` | Accessing member of a `null` object |
+| `InvalidOperationException` | Method call invalid for current state |
+| `FormatException` | String format is invalid e.g. `int.Parse("abc")` |
+| `DivideByZeroException` | Integer division by zero |
+| `OverflowException` | Arithmetic overflow in `checked` context |
+| `FileNotFoundException` | File does not exist |
+| `NotImplementedException` | Method is not yet implemented |
+
+```csharp
+// ✅ Creating a custom exception
+public class InsufficientFundsException : Exception
+{
+    public decimal Amount { get; }
+    public InsufficientFundsException(decimal amount)
+        : base($"Insufficient funds. Required: {amount}")
+    {
+        Amount = amount;
+    }
+}
+
+// Usage
+throw new InsufficientFundsException(500.00m);
+```
+
+---
+
+#### 🌐 Global Exception Handling
+
+```csharp
+// Console / Worker apps
+AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+{
+    var ex = (Exception)e.ExceptionObject;
+    Console.WriteLine($"FATAL: {ex.Message}");
+    // Log, alert, graceful shutdown
+};
+
+// ASP.NET Core — custom global middleware
+public class GlobalExceptionMiddleware
+{
+    private readonly RequestDelegate _next;
+    public GlobalExceptionMiddleware(RequestDelegate next) => _next = next;
+
+    public async Task Invoke(HttpContext context)
+    {
+        try { await _next(context); }
+        catch (Exception ex)
+        {
+            context.Response.StatusCode = 500;
+            await context.Response.WriteAsync($"Error: {ex.Message}");
+        }
+    }
+}
+```
+
+---
+
+## 📁 File Handling (`System.IO`)
+
+#### 📖 Reading & Writing — `StreamReader` / `StreamWriter`
+
+```csharp
+// ✅ Writing to a file
+using (var writer = new StreamWriter("notes.txt"))
+{
+    writer.WriteLine("Hello, Arvind!");
+    writer.WriteLine("Day 7 - File Handling");
+}
+
+// ✅ Reading from a file
+using (var reader = new StreamReader("notes.txt"))
+{
+    string? line;
+    while ((line = reader.ReadLine()) != null)
+        Console.WriteLine(line);
+}
+
+// Shorthand helpers
+string content  = File.ReadAllText("notes.txt");
+string[] lines  = File.ReadAllLines("notes.txt");
+```
+
+> 💡 Always use `using` — it calls `Dispose()` automatically and safely closes the stream.
+
+---
+
+#### 🗂️ File & Directory Operations
+
+```csharp
+// ── File operations ──────────────────────────────────────
+File.Create("new.txt");
+File.Delete("old.txt");
+File.Copy("source.txt", "dest.txt");
+File.Move("source.txt", "moved.txt");
+bool exists = File.Exists("notes.txt");
+File.WriteAllText("log.txt", "entry");           // overwrites
+File.AppendAllText("log.txt", "\nnew entry");    // appends
+
+// File metadata
+FileInfo info = new FileInfo("notes.txt");
+Console.WriteLine(info.Length);        // size in bytes
+Console.WriteLine(info.CreationTime);
+Console.WriteLine(info.Extension);    // ".txt"
+
+// ── Directory operations ─────────────────────────────────
+Directory.CreateDirectory("logs/2026");
+Directory.Delete("logs", recursive: true);
+Directory.Move("old-folder", "new-folder");
+bool dirExists = Directory.Exists("logs");
+string[] files = Directory.GetFiles(".", "*.txt");
+
+// ── Path helpers ─────────────────────────────────────────
+string full     = Path.GetFullPath("notes.txt");
+string name     = Path.GetFileName("path/notes.txt");          // "notes.txt"
+string noExt    = Path.GetFileNameWithoutExtension("n.txt");   // "n"
+string ext      = Path.GetExtension("notes.txt");              // ".txt"
+string combined = Path.Combine("logs", "2026", "app.log");     // safe OS join
+```
+
+---
+
+#### ⚡ Async File Handling
+
+```csharp
+// Always prefer async I/O in real apps — never block the thread
+
+string content = await File.ReadAllTextAsync("notes.txt");
+string[] lines = await File.ReadAllLinesAsync("notes.txt");
+await File.WriteAllTextAsync("output.txt", "Async content");
+await File.AppendAllTextAsync("log.txt", $"\n{DateTime.Now}: entry");
+
+// Async StreamReader — best for large files
+await using var reader = new StreamReader("bigfile.txt");
+while (!reader.EndOfStream)
+{
+    string? line = await reader.ReadLineAsync();
+    Console.WriteLine(line);
+}
+
+// Async StreamWriter
+await using var writer = new StreamWriter("result.txt");
+await writer.WriteLineAsync("Written asynchronously!");
+```
+
+> 💡 Use `await using` (C# 8+) for async disposable streams — equivalent to `using` but async-safe.
+
+**Quick Summary:**
+| Method | Best For |
+|---|---|
+| `File.ReadAllText` / `WriteAllText` | Small files, simple operations |
+| `File.ReadAllLines` / `WriteAllLines` | Line-by-line processing |
+| `StreamReader` / `StreamWriter` | Large files, fine-grained control |
+| `File.ReadAllTextAsync` | Non-blocking async I/O |
+| `File.AppendAllText` | Logging, appending data |
+
+</details>
+
 ---
 
 ## 🗂️ Repository Structure
@@ -522,6 +757,17 @@ csharp-learning/
 │   ├── Non-Generic/                 → ArrayList · Hashtable · Queue · Stack
 │   ├── Generic/                     → List<T> · Dictionary · HashSet · LinkedList
 │   └── Specialized/                 → Concurrent Collections
+│
+├── 📁 day7/                         ← Exception & File Handling
+│   ├── Exception-Handling/
+│   │   ├── 01-try-catch-finally/
+│   │   ├── 02-throw-vs-throw-ex/
+│   │   ├── 03-Built-in-Exceptions/
+│   │   └── 04-Global-Exception-Handling/
+│   └── File-Handling/
+│       ├── 01-StreamReader-StreamWriter/
+│       ├── 02-File-and-Directory-Operations/
+│       └── 03-Async-File-Handling/
 │
 └── 📄 README.md
 ```
