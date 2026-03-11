@@ -4,7 +4,9 @@
   <Project Path="Constructors/Constructors.csproj" />
   <Project Path="ControlStatements/ControlStatements.csproj" />
   <Project Path="DataTypes/DataTypes.csproj" />
+  <Project Path="EH/EH.csproj" Id="25036b85-80cd-40d7-b82f-77b9c38dba12" />
   <Project Path="Fields/Fields.csproj" />
+  <Project Path="FileHandling/FileHandling.csproj" Id="a222a571-c418-4958-8af9-c8493d00247f" />
   <Project Path="Generic/Generic.csproj" Id="f1d0d5aa-31d1-48c7-9340-50b5c33925f6" />
   <Project Path="loops/loops.csproj" />
   <Project Path="MethodsParams/MethodsParams.csproj" />
