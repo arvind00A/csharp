@@ -4,9 +4,12 @@
   <Project Path="Constructors/Constructors.csproj" />
   <Project Path="ControlStatements/ControlStatements.csproj" />
   <Project Path="DataTypes/DataTypes.csproj" />
+  <Project Path="Delegates/Delegates.csproj" Id="4802ee89-ec38-4be4-a127-84ebd35df526" />
   <Project Path="EH/EH.csproj" Id="25036b85-80cd-40d7-b82f-77b9c38dba12" />
+  <Project Path="Events/Events.csproj" Id="3b1b3789-b498-4e04-9bfa-95e397b2b22a" />
   <Project Path="Fields/Fields.csproj" />
   <Project Path="FileHandling/FileHandling.csproj" Id="a222a571-c418-4958-8af9-c8493d00247f" />
+  <Project Path="Functional/Functional.csproj" Id="fa72bb56-84d2-4a4a-b741-ffb50a56960c" />
   <Project Path="Generic/Generic.csproj" Id="f1d0d5aa-31d1-48c7-9340-50b5c33925f6" />
   <Project Path="loops/loops.csproj" />
   <Project Path="MethodsParams/MethodsParams.csproj" />
