@@ -9,7 +9,7 @@
 [![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)](https://dotnet.microsoft.com/)
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2026-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white)](https://visualstudio.microsoft.com/)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://github.com/arvind01A)
-[![Days](https://img.shields.io/badge/Days%20Completed-6-blue?style=for-the-badge)](https://github.com/arvind01A)
+[![Days](https://img.shields.io/badge/Days%20Completed-8-blue?style=for-the-badge)](https://github.com/arvind01A)
 
 <br/>
 
@@ -55,8 +55,9 @@ Fundamentals → OOP → Collections → Exception Hangling → File I/O → Exp
 | 5 | **Day 5** | [Generics](#-day-5--generics) | Generic Classes · Methods · Constraints | ✅ Done |
 | 6 | **Day 6** | [Collections](#-day-6--collections) | Non-Generic · Generic · Specialized · Concurrent | ✅ Done |
 | 7 | **Day 7** | [Exception & File Handling](#-day-7--exception--file-handling) | try-catch-finally · throw vs throw ex · Built-in Exceptions · Global Handler · StreamReader/Writer · File & Dir Operations · Async File I/O | ✅ Done |
-
-> 🕒 **Last updated:** March 11, 2026
+| 8 | **Day 8** | [Expert I — Functional Programming & Delegates](#-day-8--expert-i--functional-programming--delegates) | Extension Methods · Lambda · LINQ · Pattern Matching · Pure Functions · Action/Func/Predicate · Anonymous Methods · Events | ✅ Done |
+ 
+> 🕒 **Last updated:** March 12, 20266
 
 ---
 
@@ -696,6 +697,355 @@ await writer.WriteLineAsync("Written asynchronously!");
 
 ---
 
+### 🟤 Day 8 — Expert I: Functional Programming, Delegates & Events
+ 
+<details>
+<summary><b>Click to expand</b></summary>
+ 
+---
+ 
+## 🧩 Functional Programming
+ 
+#### 🔌 Extension Methods
+> Add new methods to existing types **without modifying** or inheriting them.
+ 
+```csharp
+// Define in a static class
+public static class StringExtensions
+{
+    public static bool IsNullOrEmpty(this string s) => string.IsNullOrEmpty(s);
+    public static string Capitalize(this string s)
+        => string.IsNullOrEmpty(s) ? s : char.ToUpper(s[0]) + s[1..];
+    public static bool IsEmail(this string s) => s.Contains('@') && s.Contains('.');
+}
+ 
+// Usage — called like instance methods
+"hello".Capitalize();        // "Hello"
+"".IsNullOrEmpty();          // true
+"a@b.com".IsEmail();         // true
+ 
+// Extension on IEnumerable<T>
+public static class CollectionExtensions
+{
+    public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T?> source)
+        where T : class => source.Where(x => x != null)!;
+}
+```
+ 
+---
+ 
+#### λ Lambda Expressions
+> Concise anonymous functions using `=>` syntax.
+ 
+```csharp
+// Basic syntax: (parameters) => expression
+Func<int, int> square    = x => x * x;
+Func<int, int, int> add  = (a, b) => a + b;
+Action<string> print     = msg => Console.WriteLine(msg);
+Predicate<int> isEven    = n => n % 2 == 0;
+ 
+// Multi-line lambda (statement body)
+Func<int, string> classify = n =>
+{
+    if (n < 0) return "negative";
+    if (n == 0) return "zero";
+    return "positive";
+};
+ 
+// Used inline with collections
+var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+var evens   = numbers.Where(n => n % 2 == 0).ToList();    // [2, 4, 6]
+var doubled = numbers.Select(n => n * 2).ToList();         // [2,4,6,8,10,12]
+numbers.ForEach(n => Console.Write(n + " "));
+```
+ 
+---
+ 
+#### 🔍 LINQ (Language Integrated Query)
+ 
+**Query Syntax vs Method Syntax:**
+```csharp
+var students = new List<Student>
+{
+    new("Arvind", 92), new("Raj", 78), new("Priya", 95), new("Sam", 60)
+};
+ 
+// ── Query syntax (SQL-like) ───────────────────────────────────
+var topStudents =
+    from s in students
+    where s.Score >= 80
+    orderby s.Score descending
+    select s.Name;
+ 
+// ── Method syntax (fluent, more common) ──────────────────────
+var topStudents2 = students
+    .Where(s => s.Score >= 80)
+    .OrderByDescending(s => s.Score)
+    .Select(s => s.Name);
+```
+ 
+**Key LINQ Operators:**
+```csharp
+var nums = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+ 
+// Filtering
+nums.Where(n => n > 5);                        // [6,7,8,9,10]
+ 
+// Projection
+nums.Select(n => n * n);                       // [1,4,9,16,...]
+ 
+// Ordering
+nums.OrderBy(n => n);                          // ascending
+nums.OrderByDescending(n => n);                // descending
+ 
+// Aggregation
+nums.Count();                                  // 10
+nums.Sum();                                    // 55
+nums.Average();                                // 5.5
+nums.Min();  nums.Max();                       // 1, 10
+ 
+// Element
+nums.First();   nums.First(n => n > 5);        // 1, 6
+nums.FirstOrDefault(n => n > 100);             // 0 (default)
+nums.Single(n => n == 5);                      // 5 (throws if 0 or 2+)
+nums.ElementAt(3);                             // 4
+ 
+// Partitioning
+nums.Take(3);                                  // [1,2,3]
+nums.Skip(7);                                  // [8,9,10]
+nums.TakeWhile(n => n < 5);                    // [1,2,3,4]
+ 
+// Grouping
+var grouped = students.GroupBy(s => s.Score >= 80 ? "Pass" : "Fail");
+foreach (var g in grouped)
+    Console.WriteLine($"{g.Key}: {string.Join(", ", g.Select(s => s.Name))}");
+ 
+// Set operations
+var a = new[] { 1, 2, 3 };  var b = new[] { 3, 4, 5 };
+a.Union(b);       // [1,2,3,4,5]
+a.Intersect(b);   // [3]
+a.Except(b);      // [1,2]
+a.Distinct();     // removes duplicates
+```
+ 
+**LINQ to Collections & LINQ to XML:**
+```csharp
+// LINQ to Objects — works on any IEnumerable<T>
+var dict = new Dictionary<string, int> { ["A"]=1, ["B"]=2, ["C"]=3 };
+var filtered = dict.Where(kv => kv.Value > 1).Select(kv => kv.Key); // ["B","C"]
+ 
+// LINQ to XML
+var xml = XElement.Parse(@"
+    <students>
+        <student name='Arvind' score='92'/>
+        <student name='Raj'    score='78'/>
+    </students>");
+ 
+var names = xml.Elements("student")
+               .Where(e => (int)e.Attribute("score") >= 80)
+               .Select(e => (string)e.Attribute("name"));
+// ["Arvind"]
+```
+ 
+---
+ 
+#### 🎭 Pattern Matching (C# 8+)
+```csharp
+// switch expression with patterns
+object shape = new Circle(5.0);
+ 
+string desc = shape switch
+{
+    Circle c when c.Radius > 10  => $"Large circle r={c.Radius}",
+    Circle c                     => $"Small circle r={c.Radius}",
+    Rectangle r                  => $"Rectangle {r.Width}x{r.Height}",
+    null                         => "null shape",
+    _                            => "Unknown shape"
+};
+ 
+// Property patterns
+bool isAdult = person switch
+{
+    { Age: >= 18, Country: "IN" } => true,
+    _                              => false
+};
+ 
+// Tuple patterns
+string RPS(string a, string b) => (a, b) switch
+{
+    ("Rock",     "Scissors") => "Win",
+    ("Scissors", "Paper")    => "Win",
+    ("Paper",    "Rock")     => "Win",
+    (var x,      var y) when x == y => "Draw",
+    _                        => "Lose"
+};
+```
+ 
+---
+ 
+#### 🔬 Immutability, Pure Functions & Higher-Order Functions
+ 
+```csharp
+// ── Immutability ─────────────────────────────────────────────
+// Use record types for immutable data (C# 9+)
+public record Point(double X, double Y);
+var p1 = new Point(1, 2);
+var p2 = p1 with { X = 5 };   // creates new, p1 unchanged
+ 
+// ── Pure Functions ───────────────────────────────────────────
+// ✅ Pure: same input → same output, no side effects
+static int Add(int a, int b) => a + b;
+ 
+// ❌ Impure: depends on or modifies external state
+static int counter = 0;
+static int Increment() => ++counter;   // side effect!
+ 
+// ── Higher-Order Functions ───────────────────────────────────
+// Functions that take or return other functions
+static IEnumerable<T> Filter<T>(IEnumerable<T> items, Func<T, bool> predicate)
+    => items.Where(predicate);
+ 
+static Func<int, int> Multiplier(int factor) => x => x * factor;
+ 
+var double_ = Multiplier(2);
+var triple  = Multiplier(3);
+double_(5);   // 10
+triple(5);    // 15
+ 
+// ── Declarative vs Imperative ────────────────────────────────
+var nums = Enumerable.Range(1, 10).ToList();
+ 
+// ❌ Imperative (how)
+var result = new List<int>();
+foreach (var n in nums)
+    if (n % 2 == 0) result.Add(n * n);
+ 
+// ✅ Declarative (what)
+var result2 = nums.Where(n => n % 2 == 0).Select(n => n * n).ToList();
+```
+ 
+---
+ 
+## 📣 Delegates
+ 
+#### 🎯 Action, Func & Predicate
+ 
+| Type | Signature | Returns | Use Case |
+|---|---|---|---|
+| `Action` | `Action<T1, T2, ...>` | `void` | Do something, no return |
+| `Func` | `Func<T1, T2, ..., TResult>` | `TResult` | Transform / compute |
+| `Predicate<T>` | `Predicate<T>` | `bool` | Test a condition |
+ 
+```csharp
+// Action — void return
+Action greet              = () => Console.WriteLine("Hello!");
+Action<string> greetName  = name => Console.WriteLine($"Hello, {name}!");
+Action<int, int> printSum = (a, b) => Console.WriteLine(a + b);
+ 
+greet();               // "Hello!"
+greetName("Arvind");   // "Hello, Arvind!"
+ 
+// Func — returns a value (last type param = return type)
+Func<int, int> square        = x => x * x;
+Func<string, int> strLen     = s => s.Length;
+Func<int, int, bool> greater = (a, b) => a > b;
+ 
+square(4);         // 16
+strLen("Arvind");  // 6
+ 
+// Predicate<T> — always returns bool
+Predicate<int> isEven     = n => n % 2 == 0;
+Predicate<string> isEmpty = s => s.Length == 0;
+ 
+isEven(4);       // true
+isEmpty("");     // true
+ 
+// Chaining with collections
+var nums = new List<int> { 1, 2, 3, 4, 5, 6 };
+nums.FindAll(isEven);              // [2, 4, 6]
+nums.RemoveAll(n => n < 3);        // removes 1, 2
+ 
+// Multicast delegate (+=)
+Action log = () => Console.WriteLine("Log 1");
+log += () => Console.WriteLine("Log 2");
+log();  // prints both
+```
+ 
+---
+ 
+#### 🕵️ Anonymous Methods
+```csharp
+// Old style (C# 2.0) — before lambda expressions
+Func<int, int> square = delegate(int x) { return x * x; };
+Action<string> print  = delegate(string msg) { Console.WriteLine(msg); };
+ 
+// Event handlers with anonymous methods
+button.Click += delegate(object sender, EventArgs e)
+{
+    Console.WriteLine("Button clicked!");
+};
+ 
+// ✅ Modern equivalent using lambda
+button.Click += (sender, e) => Console.WriteLine("Button clicked!");
+```
+ 
+---
+ 
+## 📡 Events & Event Handling
+ 
+```csharp
+// ── Defining and raising events ──────────────────────────────
+public class OrderService
+{
+    // 1. Declare delegate type (or use built-in EventHandler)
+    public event EventHandler<OrderEventArgs> OrderPlaced;
+ 
+    public void PlaceOrder(string item)
+    {
+        Console.WriteLine($"Order placed: {item}");
+        // 2. Raise the event (null-check with ?.)
+        OrderPlaced?.Invoke(this, new OrderEventArgs(item));
+    }
+}
+ 
+// Custom EventArgs
+public class OrderEventArgs : EventArgs
+{
+    public string Item { get; }
+    public DateTime PlacedAt { get; } = DateTime.Now;
+    public OrderEventArgs(string item) => Item = item;
+}
+ 
+// ── Subscribing to events ─────────────────────────────────────
+var service = new OrderService();
+ 
+// Subscribe with named method
+service.OrderPlaced += OnOrderPlaced;
+ 
+// Subscribe with lambda
+service.OrderPlaced += (sender, e) =>
+    Console.WriteLine($"[Email] Order confirmed: {e.Item} at {e.PlacedAt}");
+ 
+service.PlaceOrder("Laptop");   // triggers both handlers
+ 
+// Unsubscribe
+service.OrderPlaced -= OnOrderPlaced;
+ 
+static void OnOrderPlaced(object? sender, OrderEventArgs e)
+    => Console.WriteLine($"[SMS] Shipped: {e.Item}");
+```
+ 
+**Delegate vs Event:**
+| | `delegate` | `event` |
+|---|---|---|
+| **Invoke** | Anyone can call it | Only declaring class can raise it |
+| **Assign** | Can be replaced with `=` | Only `+=` / `-=` from outside |
+| **Use case** | Callbacks, HOF | Publisher-subscriber pattern |
+ 
+</details>
+ 
+---
+
 ## 🗂️ Repository Structure
 
 ```
@@ -768,6 +1118,22 @@ csharp-learning/
 │       ├── 01-StreamReader-StreamWriter/
 │       ├── 02-File-and-Directory-Operations/
 │       └── 03-Async-File-Handling/
+│
+├── 📁 day8/                         ← Expert I: Functional Programming & Delegates
+│   ├── Functional-Programming/
+│   │   ├── 01-Extension-Methods/
+│   │   ├── 02-Lambda-Expressions/
+│   │   ├── 03-LINQ/
+│   │   │   ├── LINQ-Queries-Select-Where-OrderBy/
+│   │   │   ├── LINQ-with-Collections/
+│   │   │   └── Lambda-Expressions-in-LINQ/
+│   │   ├── 04-Pattern-Matching/
+│   │   └── 05-Immutability-PureFunctions-HOF/
+│   ├── Delegates/
+│   │   ├── 01-Action-Func-Predicate/
+│   │   └── 02-Anonymous-Methods/
+│   └── Events/
+│       └── 01-Events-and-Event-Handling/
 │
 └── 📄 README.md
 ```
