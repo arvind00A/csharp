@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ArrayApplication/ArrayApplication.csproj" Id="fae7f00f-4fe9-42e3-b45f-5f12778143b7" />
+  <Project Path="Asyncprogramming/Asyncprogramming.csproj" Id="13cfc5ea-30d1-4c8c-94e7-c5ae71616161" />
   <Project Path="Collections/Collections.csproj" Id="2dd0860b-22c7-4520-bf73-53fdadc83bab" />
   <Project Path="Constructors/Constructors.csproj" />
   <Project Path="ControlStatements/ControlStatements.csproj" />
@@ -13,8 +14,10 @@
   <Project Path="Generic/Generic.csproj" Id="f1d0d5aa-31d1-48c7-9340-50b5c33925f6" />
   <Project Path="loops/loops.csproj" />
   <Project Path="MethodsParams/MethodsParams.csproj" />
+  <Project Path="Multithreading/Multithreading.csproj" Id="24ab94c8-0b6c-4907-8b19-be72f09d7eec" />
   <Project Path="OOPs/OOPs.csproj" />
   <Project Path="Operators/Operators.csproj" />
+  <Project Path="Serialization/Serialization.csproj" Id="706935ff-f2a4-4c1c-9945-df96684f6ee6" />
   <Project Path="StringApplication/StringApplication.csproj" Id="0ddb0110-b059-48d8-b884-72dbbeeca8d5" />
   <Project Path="TuplesApplication/TuplesApplication.csproj" Id="4cb6c535-5685-47cc-b238-68cca9ba5029" />
   <Project Path="Variables/Variables.csproj" />
