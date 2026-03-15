@@ -1,11 +1,13 @@
 <Solution>
   <Project Path="ArrayApplication/ArrayApplication.csproj" Id="fae7f00f-4fe9-42e3-b45f-5f12778143b7" />
   <Project Path="Asyncprogramming/Asyncprogramming.csproj" Id="13cfc5ea-30d1-4c8c-94e7-c5ae71616161" />
+  <Project Path="Best Practices/Best Practices.csproj" Id="e5c2c80b-b143-46c3-80dc-c5e2bd281cb2" />
   <Project Path="Collections/Collections.csproj" Id="2dd0860b-22c7-4520-bf73-53fdadc83bab" />
   <Project Path="Constructors/Constructors.csproj" />
   <Project Path="ControlStatements/ControlStatements.csproj" />
   <Project Path="DataTypes/DataTypes.csproj" />
   <Project Path="Delegates/Delegates.csproj" Id="4802ee89-ec38-4be4-a127-84ebd35df526" />
+  <Project Path="Design Patterns/Design Patterns.csproj" Id="d5343d03-09e3-4ac2-b089-bb9db8970802" />
   <Project Path="EH/EH.csproj" Id="25036b85-80cd-40d7-b82f-77b9c38dba12" />
   <Project Path="Events/Events.csproj" Id="3b1b3789-b498-4e04-9bfa-95e397b2b22a" />
   <Project Path="Fields/Fields.csproj" />
